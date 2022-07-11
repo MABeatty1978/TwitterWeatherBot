@@ -1,1 +1,2 @@
-tBot.env
+.env
+*.swp
