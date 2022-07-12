@@ -17,7 +17,7 @@ You will need
   - Authintication tokens: ACCESS_TOKEN and ACCESS_TOKEN_SECRET
   
 ## WeatherFlow developer
-You will need to get an access token from WeatherFlow along with your device and station IDs.  To get the token, log into your account at tempestws.com and go to setting -> Data Authorizations - Create token.  Save this value.  To get your device and station IDs, from the main acount screen, select the Tempest icon in the top right to bring up your device.  Then at the bottom right of the page, click on "Online".  You can get those values from the following tables.
+You will need to get an access token from WeatherFlow along with your device and station IDs.  To get the token, log into your account at tempestws.com and go to setting -> Data Authorizations - Create token.  Save this value.  To get your device and station IDs, from the main acount screen, select the Tempest icon in the top right to bring up your device.  Then at the bottom right of the page, click on "Online".  You can get those values from the following tables.  Documentation is here https://weatherflow.github.io/Tempest/api/
   
 ## Setup your environment
 - Save the keys in a ".env" file in your program directory.  
