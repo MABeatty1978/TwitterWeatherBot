@@ -8,10 +8,10 @@ import json
 
 load_dotenv()
 
-consumer_key = os.getenv('API_KEY')
-consumer_secret = os.getenv('API_KEY_SECRET')
-access_token = os.getenv('ACCESS_TOKEN')
-access_token_secret = os.getenv('ACCESS_TOKEN_SECRET')
+consumer_key = os.getenv('TW_API_KEY')
+consumer_secret = os.getenv('TW_API_KEY_SECRET')
+access_token = os.getenv('TW_ACCESS_TOKEN')
+access_token_secret = os.getenv('TW_ACCESS_TOKEN_SECRET')
 my_station_id = os.getenv('WF_STATION_ID')
 my_token = os.getenv('WF_TOKEN')
 my_url = "https://swd.weatherflow.com/swd/rest/better_forecast?station_id={}&units_temp=f&units_wind=mph&units_pressure=inhg&units_precip=in&units_distance=mi&token={}".format(my_station_id, my_token)
@@ -52,7 +52,9 @@ if precipProb != 0:
 else:
     msg = msg + "No chance of precipitation\n"
 msg = msg + "Sunrise/set is at {}/{}".format(sunrise, sunset)
+
 print(msg)
+
 auth = tweepy.OAuth1UserHandler(consumer_key, consumer_secret, access_token, access_token_secret)
 api = tweepy.API(auth)
 api.update_status(msg)

@@ -104,7 +104,9 @@ if temp != wind_chill:
     msg = msg + "\nWind Chill: {}".format(wind_chill)
 
 msg = msg + "\nPressure is {} and {}\nWind: {} {}mph\nWind Gust: {}mph\nUV Index: {}\nLast Lightning Strike:\n{}, {} miles away".format(pressure, trend,  wind_dir, wind_avg, wind_gust, uv, last_lightning, lightning_distance ) 
+
 print(msg)
+
 auth = tweepy.OAuth1UserHandler(consumer_key, consumer_secret, access_token, access_token_secret)
 api = tweepy.API(auth)
 api.update_status(msg)
