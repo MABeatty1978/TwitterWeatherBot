@@ -11,15 +11,15 @@ import tweepy
 
 load_dotenv()
 
-consumer_key = os.getenv('API_KEY')
-consumer_secret = os.getenv('API_KEY_SECRET')
-access_token = os.getenv('ACCESS_TOKEN')
-access_token_secret = os.getenv('ACCESS_TOKEN_SECRET')
+consumer_key = os.getenv('TW_API_KEY')
+consumer_secret = os.getenv('TW_API_KEY_SECRET')
+access_token = os.getenv('TW_ACCESS_TOKEN')
+access_token_secret = os.getenv('TW_ACCESS_TOKEN_SECRET')
 
 
-device_id = os.getenv('MY_DEVICE_ID')
-station_id = os.getenv('MY_STATION_ID')
-token_id = os.getenv('MY_TOKEN')
+device_id = os.getenv('WF_DEVICE_ID')
+station_id = os.getenv('WF_STATION_ID')
+token_id = os.getenv('WF_TOKEN')
 my_time = datetime.now().strftime("%I:%M%p")
 station_url = "https://swd.weatherflow.com/swd/rest/observations/station/{}?token={}".format(station_id, token_id)
 device_url = "https://swd.weatherflow.com/swd/rest/observations/device/{}?token={}".format(device_id, token_id)
