@@ -44,7 +44,7 @@ brightness = s_data['obs'][0]['brightness']
 feels_like = s_data['obs'][0]['feels_like']
 wind_chill = s_data['obs'][0]['wind_chill']
 
-last_lightning = datetime.fromtimestamp(last_lightning).strftime("%d/%m %I:%M:%S%p")
+last_lightning = datetime.fromtimestamp(last_lightning).strftime("%m/%d %I:%M:%S%p")
 
 temp = (str(int(temp * 1.8 + 32))) + u'\N{DEGREE SIGN}'
 feels_like = (str(int(feels_like * 1.8 + 32))) + u'\N{DEGREE SIGN}' 
