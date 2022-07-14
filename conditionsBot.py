@@ -30,6 +30,7 @@ d_data = d.json()
 
 trend = d_data['summary']['pressure_trend']
 last_lightning = d_data['summary']['strike_last_epoch']
+lightning_1h = d_data['summary']['strike_count_1h']
 lightning_distance = d_data['summary']['strike_last_dist']
 temp = s_data['obs'][0]['air_temperature']
 pressure = s_data['obs'][0]['barometric_pressure']
@@ -43,7 +44,9 @@ uv = s_data['obs'][0]['uv']
 brightness = s_data['obs'][0]['brightness']
 feels_like = s_data['obs'][0]['feels_like']
 wind_chill = s_data['obs'][0]['wind_chill']
-
+precip_day = s_data['obs'][0]['precip_accum_local_day']
+precip_hour = s_data['obs'][0]['precip_accum_last_1hr']
+precip_minutes = s_data['obs'][0]['precip_minutes_local_day']
 last_lightning = datetime.fromtimestamp(last_lightning).strftime("%m/%d %I:%M:%S%p")
 
 temp = (str(int(temp * 1.8 + 32))) + u'\N{DEGREE SIGN}'
@@ -51,6 +54,7 @@ feels_like = (str(int(feels_like * 1.8 + 32))) + u'\N{DEGREE SIGN}'
 wind_chill = (str(int(wind_chill * 1.8 + 32))) + u'\N{DEGREE SIGN}' 
 wind_avg = int(wind_avg * 2.2)
 wind_gust = int(wind_gust * 2.2)
+precip_hour = int(precip_hour /25.4)
 pressure = (str(int(pressure))) + "mb"
 humidity = str(humidity)+"%"
 if wind_dir > 348:
@@ -103,8 +107,13 @@ if temp != feels_like:
 if temp != wind_chill:
     msg = msg + "\nWind Chill: {}".format(wind_chill)
 
-msg = msg + "\nPressure is {} and {}\nWind: {} {}mph\nWind Gust: {}mph\nUV Index: {}\nLast Lightning Strike:\n{}, {} miles away".format(pressure, trend,  wind_dir, wind_avg, wind_gust, uv, last_lightning, lightning_distance ) 
-
+msg = msg + "\nHumidity: {}\nPressure: {} and {}\nWind: {} {}mph\nWind Gust: {}mph\nUV Index: {}".format(humidity, pressure, trend,  wind_dir, wind_avg, wind_gust, uv)
+if precip_day > 0:
+    precip_day = str("{:.2f}".format((precip_day / 25.4)))
+    precip_hour = str("{:.2f}".format((precip_hour /25.4))) 
+    msg = msg + "\nPrecip total: {}\"\nPrecip last hour: {}\"".format(precip_day, precip_hour)
+if lightning_1h > 0:
+    msg = msg + "\nLightning strikes last hour: {}\nLast strike {} miles away at {}".format(lightning_1h, lightning_distance, last_lightning) 
 print(msg)
 
 auth = tweepy.OAuth1UserHandler(consumer_key, consumer_secret, access_token, access_token_secret)
