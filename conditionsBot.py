@@ -108,7 +108,7 @@ if uv > 0:
     elif uv >= 3:
         uv = str(uv) + " - MODERATE"
     else:
-        uv = str(uv) + " - LOW"
+        uv = str(uv) + " - LOW "
     msg = msg + "\nUV Index: {}".format(uv)
 
 if precip_day > 0:
