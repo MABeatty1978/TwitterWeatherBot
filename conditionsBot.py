@@ -92,22 +92,25 @@ elif wind_dir > 11:
 else:
     wind_dir = "N"
 
-if uv >= 8:
-    uv = str(uv) + " - VERY HIGH"
-elif uv >= 6:
-    uv = str(uv) + " - HIGH"
-elif uv >= 3:
-    uv = str(uv) + " - MODERATE"
-else:
-    uv = str(uv) + " - LOW"
-
 msg = "Current Conditions - {}\nTemp: {}".format(my_time, temp)
 if temp != feels_like:
     msg = msg + "\nFeels Like: {}".format(feels_like)
 if temp != wind_chill:
     msg = msg + "\nWind Chill: {}".format(wind_chill)
 
-msg = msg + "\nHumidity: {}\nPressure: {} and {}\nWind: {} {}mph\nWind Gust: {}mph\nUV Index: {}".format(humidity, pressure, trend,  wind_dir, wind_avg, wind_gust, uv)
+msg = msg + "\nHumidity: {}\nPressure: {} and {}\nWind: {} {}mph\nWind Gust: {}mph".format(humidity, pressure, trend,  wind_dir, wind_avg, wind_gust)
+
+if uv > 0:
+    if uv >= 8:
+        uv = str(uv) + " - VERY HIGH"
+    elif uv >= 6:
+        uv = str(uv) + " - HIGH"
+    elif uv >= 3:
+        uv = str(uv) + " - MODERATE"
+    else:
+        uv = str(uv) + " - LOW"
+    msg = msg + "\nUV Index: {}".format(uv)
+
 if precip_day > 0:
     precip_day = str("{:.2f}".format((precip_day / 25.4)))
     precip_hour = str("{:.2f}".format((precip_hour /25.4))) 
