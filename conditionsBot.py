@@ -45,7 +45,7 @@ brightness = s_data['obs'][0]['brightness']
 feels_like = s_data['obs'][0]['feels_like']
 wind_chill = s_data['obs'][0]['wind_chill']
 precip_day = s_data['obs'][0]['precip_accum_local_day_final']
-precip_hour = s_data['obs'][0]['precip_accum_last_1hr']
+precip_hour = d_data['summary']['precip_total_1hr']
 precip_minutes = s_data['obs'][0]['precip_minutes_local_day']
 last_lightning = datetime.fromtimestamp(last_lightning).strftime("%m/%d %I:%M:%S%p")
 
